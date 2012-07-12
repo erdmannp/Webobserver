@@ -27,7 +27,7 @@ class FetchSite():
 
     def getHash(self, site):
         try:
-            return hashlib.sha1(self.process(site))
+            return hashlib.sha1(self.process(site)).hexdigest()
         except:
             raise
 

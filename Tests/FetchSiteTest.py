@@ -7,7 +7,7 @@ import unittest
 from FetchSite import FetchSite
 
 
-class Test(unittest.TestCase):
+class FetchSiteTest(unittest.TestCase):
 
     def testFetchSite(self):
         fs = FetchSite({u'Seitenname': {u'url': u'http://google.de', u'type': u'http'}})

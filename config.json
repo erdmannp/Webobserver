@@ -6,15 +6,15 @@
 		
         "sites":
         {        		
-                "Seitenname":
+                "Pruefungstermine":
                 {
                         "type":"http",
-                        "url" : "http://google.de"
+                        "url" : "https://www.fh-muenster.de/fb2/aktuell/termine/2012/prueftermine_ss2012a.php"
                 },
-                "name":
+                "T430S":
                 {
-                        "type":"http",
-                        "url" : "http://google.de"
+                        "type": "http",
+                        "url" : "http://www.uni-notebooks.net/ThinkPad-T420s-4173W15-4173CTO.3480.0.html"
                 }
         },
         
@@ -25,14 +25,15 @@
                 "patrick":
                 {
                         "email":"pe@perdmann.de",
-                        "sites" : ["Seitenname", "name"]
+                        "sites" : ["T430S", "Pruefungstermine"]
                 }
         },
         
         "mailserver":
         {        		
  
-                "server":"localhost"
+                "server":"localhost",
+                "sender":"root"
         }
                 
 }

@@ -7,7 +7,7 @@ import unittest
 from ParseConfig import ParseConfig
 
 
-class Test(unittest.TestCase):
+class ParseConfigTest(unittest.TestCase):
 
     def setUp(self):
         pass

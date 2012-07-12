@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 '''
 Created on 12.07.2012
 
@@ -12,14 +13,14 @@ class SendMail(object):
 
     def __init__(self, cfg):
         self.config = cfg
-        msg = MIMEText("")
 
-        msg['Subject'] = u'[Überwachung] %s' % textfile
-        msg['From'] = me
-        msg['To'] = you
+    def sendMail(self, to, url, siteName):
+        msg = MIMEText(u'Die URL: %s hat sich geaendert' % (url))
 
-# Send the message via our own SMTP server, but don't include the
-# envelope header.
-s = smtplib.SMTP('localhost')
-s.sendmail(me, [you], msg.as_string())
-s.quit()
+        msg['Subject'] = u'[Ueberwachung] %s' % siteName
+        msg['From'] = self.config['sender']
+        msg['To'] = to
+
+        s = smtplib.SMTP(self.config['server'])
+        s.sendmail(self.config['sender'], [to], msg.as_string())
+        s.quit()

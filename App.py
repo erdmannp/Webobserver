@@ -5,32 +5,31 @@ Created on 12.07.2012
 '''
 from ParseConfig import ParseConfig
 from FetchSite import FetchSite
-import os
+from SendMail import SendMail
+from TmpFileHandler import TmpFileHandler
 
 
 class App():
-    config = object
+    config  = object
     fetcher = object
-    path = os.path.abspath(os.path.dirname(__file__))
-    tmpPath = path + '/tmp'
+    mail    = object
 
     def __init__(self):
-        if not os.access(self.tmpPath, 755):
-            try:
-                os.mkdir(self.tmpPath)
-                os.chmod(self.tmpPath, 755)
-
-            except OSError:
-                os.chmod(self.tmpPath, 755)
-            except:
-                raise
-
         self.config = ParseConfig()
         self.fetcher = FetchSite(self.config.getSites())
+        self.mail = SendMail(self.config.getMailConfig())
 
     def run(self):
-        pass
-
+        for site in self.config.getSites():
+            url = self.config.getSites()[site]['url']
+            obj = TmpFileHandler(site)
+            if obj.getHash() is not self.fetcher.getHash(site):
+                # Mail senden und neuen Hash speichern
+                obj.setHash(site)
+                for contact in self.config.getContacts():
+                    to = self.config.getContacts()[contact]['email']
+                    if site in  self.config.getContacts()[contact]['sites']:
+                        self.mail.sendMail(to, url, site)
 
 if __name__ == '__main__':
     app = App()
