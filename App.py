@@ -7,6 +7,7 @@ from ParseConfig import ParseConfig
 from FetchSite import FetchSite
 from SendMail import SendMail
 from TmpFileHandler import TmpFileHandler
+from hashlib import sha1
 
 
 class App():
@@ -25,7 +26,8 @@ class App():
             obj = TmpFileHandler(site)
             if obj.getHash() is not self.fetcher.getHash(site):
                 # Mail senden und neuen Hash speichern
-                obj.setHash(site)
+                obj.setHash(sha1(site).hexdigest())
+
                 for contact in self.config.getContacts():
                     to = self.config.getContacts()[contact]['email']
                     if site in  self.config.getContacts()[contact]['sites']:
