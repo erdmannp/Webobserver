@@ -5,6 +5,7 @@ Created on 12.07.2012
 '''
 import os
 import stat
+from hashlib import sha1
 
 
 class TmpFileHandler(object):
@@ -34,7 +35,7 @@ class TmpFileHandler(object):
 
     def setHash(self, h):
         fp = open(os.path.join(self.tmpPath, self.f), 'w')
-        fp.write(h)
+        fp.write(sha1(h).hexdigest())
         fp.close()
 
     def delete(self):
