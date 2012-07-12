@@ -1,0 +1,38 @@
+{
+        "general":
+		{
+			"debug": true
+		},
+		
+        "sites":
+        {        		
+                "Seitenname":
+                {
+                        "type":"http",
+                        "url" : "http://google.de"
+                },
+                "name":
+                {
+                        "type":"http",
+                        "url" : "http://google.de"
+                }
+        },
+        
+        
+
+        "contacts":
+        {        		
+                "patrick":
+                {
+                        "email":"pe@perdmann.de",
+                        "sites" : ["Seitenname", "name"]
+                }
+        },
+        
+        "mailserver":
+        {        		
+ 
+                "server":"localhost"
+        }
+                
+}
