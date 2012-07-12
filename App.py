@@ -24,7 +24,8 @@ class App():
         for site in self.config.getSites():
             url = self.config.getSites()[site]['url']
             obj = TmpFileHandler(site)
-            if obj.getHash() is not self.fetcher.getHash(site):
+
+            if obj.getHash() != self.fetcher.getHash(site):
                 # Mail senden und neuen Hash speichern
                 obj.setHash(sha1(site).hexdigest())
 
