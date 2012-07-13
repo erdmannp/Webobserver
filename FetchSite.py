@@ -3,31 +3,27 @@ Created on 12.07.2012
 
 @author: pe
 '''
-import urllib
+import urllib2
 import hashlib
 
 
 class FetchSite():
-    sites = object
+    data = ""
 
-    def __init__(self, sites):
-        self.sites = sites
-
-    def process(self, site):
-        data = ""
-
+    def __init__(self, site):
         try:
-            f = urllib.urlopen(self.sites[site]['url'])
-            data = f.read()
+            f = urllib2.urlopen(site)
+            self.data = f.read()
             f.close()
         except ValueError:
             raise
 
-        return data
+    def getData(self):
+        return self.data
 
-    def getHash(self, site):
+    def getHash(self):
         try:
-            return hashlib.sha1(self.process(site)).hexdigest()
+            return hashlib.sha1(self.data).hexdigest()
         except:
             raise
 

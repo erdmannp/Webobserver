@@ -29,8 +29,8 @@ class TmpFileHandler(object):
             fp = open(os.path.join(self.tmpPath, self.f), 'r')
             return fp.read()
         except:
-            self.setHash(' ')
-            return
+            self.setHash('init')
+            return 'init'
 
     def setHash(self, h):
         fp = open(os.path.join(self.tmpPath, self.f), 'w')

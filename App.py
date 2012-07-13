@@ -12,20 +12,24 @@ from hashlib import sha1
 
 class App():
     config  = object
-    fetcher = object
     mail    = object
 
     def __init__(self):
         self.config = ParseConfig()
-        self.fetcher = FetchSite(self.config.getSites())
         self.mail = SendMail(self.config.getMailConfig())
 
     def run(self):
         for site in self.config.getSites():
             url = self.config.getSites()[site]['url']
-            obj = TmpFileHandler(site)
 
-            if obj.getHash() != self.fetcher.getHash(site):
+            obj = TmpFileHandler(site)
+            fetcher = FetchSite(url)
+
+            if obj.getHash() is 'init':
+                obj.setHash(sha1(site).hexdigest())
+                break
+
+            if obj.getHash() is not fetcher.getHash():
                 # Mail senden und neuen Hash speichern
                 obj.setHash(sha1(site).hexdigest())
 

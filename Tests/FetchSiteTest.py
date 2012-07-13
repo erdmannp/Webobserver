@@ -10,8 +10,9 @@ from FetchSite import FetchSite
 class FetchSiteTest(unittest.TestCase):
 
     def testFetchSite(self):
-        fs = FetchSite({u'Seitenname': {u'url': u'http://google.de', u'type': u'http'}})
-        fs.process('Seitenname')
+        fs = FetchSite('http://www.uni-notebooks.net/ThinkPad-T420s-4173W15-4173CTO.3480.0.html')
+        print fs.getData()
+        print fs.getHash()
 
 
 if __name__ == "__main__":
