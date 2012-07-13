@@ -47,7 +47,6 @@ class App():
                 if self.debug:
                     print("First Time fetching " + site)
                 obj.setHash(fetcher.getHash())
-                break
 
             if obj.getHash() != fetcher.getHash():
                 if self.debug:
