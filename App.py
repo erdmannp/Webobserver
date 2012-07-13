@@ -36,21 +36,18 @@ class App():
             obj = TmpFileHandler(site)
             fetcher = FetchSite(url)
 
-            if obj.getHash() is 'init':
-                if self.debug:
-                    print("First Time fetching " + site)
-
-                obj.setHash(fetcher.getHash())
-                break
-
             if regex is not None:
                 if self.debug:
                     print("Using Regex for " + site)
-
                 fetcher.useRegex(regex)
-
                 if self.debug:
                     print("Regex Result (first 100 chars): " + fetcher.getData()[0:100])
+
+            if obj.getHash() is 'init':
+                if self.debug:
+                    print("First Time fetching " + site)
+                obj.setHash(fetcher.getHash())
+                break
 
             if obj.getHash() != fetcher.getHash():
                 if self.debug:
