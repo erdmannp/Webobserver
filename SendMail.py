@@ -17,7 +17,7 @@ class SendMail(object):
     def sendMail(self, to, url, siteName):
         msg = MIMEText(u'Die URL: %s hat sich geaendert' % (url))
 
-        msg['Subject'] = u'[Ueberwachung] %s' % siteName
+        msg['Subject'] = u'[WebObserver] %s' % siteName
         msg['From'] = self.config['sender']
         msg['To'] = to
 
