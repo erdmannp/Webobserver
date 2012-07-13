@@ -6,15 +6,16 @@
 		
         "sites":
         {        		
-                "Pruefungstermine":
+                "GoogleMitRegex":
                 {
                         "type":"http",
-                        "url" : "https://www.fh-muenster.de/fb2/aktuell/termine/2012/prueftermine_ss2012a.php"
+                        "url" : "http://google.de",
+                        "regex": "pdf(.*?)<testWontMatch"
                 },
-                "T430S":
+                "Google":
                 {
                         "type": "http",
-                        "url" : "http://www.uni-notebooks.net/ThinkPad-T420s-4173W15-4173CTO.3480.0.html"
+                        "url" : "http://google.de"
                 }
         },
         
@@ -24,8 +25,8 @@
         {        		
                 "patrick":
                 {
-                        "email":"pe@perdmann.de",
-                        "sites" : ["T430S", "Pruefungstermine"]
+                        "email":"test@example.de",
+                        "sites" : ["Google", "GoogleMitRegex"]
                 }
         },
         

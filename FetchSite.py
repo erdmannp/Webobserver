@@ -1,3 +1,4 @@
+from __future__ import print_function
 '''
 Created on 12.07.2012
 
@@ -5,6 +6,8 @@ Created on 12.07.2012
 '''
 import urllib2
 import hashlib
+import re
+from sys import stderr
 
 
 class FetchSite():
@@ -17,6 +20,13 @@ class FetchSite():
             f.close()
         except ValueError:
             raise
+
+    def useRegex(self, regex):
+        try:
+            self.data = re.findall(regex, self.data)[0]
+        except IndexError:
+            print()
+            print("Failure in Regex, im using the default data", file=stderr)
 
     def getData(self):
         return self.data
