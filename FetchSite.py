@@ -21,12 +21,19 @@ class FetchSite():
         except ValueError:
             raise
 
-    def useRegex(self, regex):
-        try:
-            self.data = re.findall(regex, self.data)[0]
-        except IndexError:
+    def useRegex(self, regex):        
+        rtmp = re.findall(regex, self.data)
+        tmp = ""
+        
+        if len(rtmp) > 0:
+            for i in rtmp:
+                tmp += i
+        else:
             print()
-            print("Failure in Regex, im using the default data", file=stderr)
+            print("Failure in Regex, im using the default data", file=stderr)       
+
+        self.data = tmp
+
 
     def getData(self):
         return self.data
