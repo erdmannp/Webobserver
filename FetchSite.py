@@ -18,6 +18,8 @@ class FetchSite():
             f = urllib2.urlopen(site)
             self.data = f.read()
             f.close()
+        except urllib2.URLError:
+            print("URLError Failure, could not open: %s" %(site), file=stderr)
         except ValueError:
             raise
 
@@ -30,7 +32,7 @@ class FetchSite():
                 tmp += i
         else:
             print()
-            print("Failure in Regex, im using the default data", file=stderr)       
+            print("Failure in Regex, i'm using the default data", file=stderr)       
 
         self.data = tmp
 
