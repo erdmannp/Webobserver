@@ -9,7 +9,6 @@ import hashlib
 import re
 from sys import stderr
 
-
 class FetchSite():
     data = ""
 
@@ -31,9 +30,9 @@ class FetchSite():
             for i in rtmp:
                 tmp += i
         else:
-            print()
-            print("Failure in Regex, i'm using the default data", file=stderr)       
-
+            print("Failure in Regex, i'm using the default data", file=stderr)
+            tmp = self.data
+            
         self.data = tmp
 
 
